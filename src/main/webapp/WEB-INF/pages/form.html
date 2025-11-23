@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+<div id="form-wrapper">
+    <h1 th:text="${title}" class="mt-20"></h1>
+    <form method="post" th:action="${url}" th:object="${user}" class="main-form mt-20">
+        <label th:if="${user.id != null}">ID</label>
+        <input type="text" readonly name="id" th:value="*{id}" th:if="${user.id != null}"/>
+        <label for="firstName">First Name</label>
+        <input type="text" required name="firstName" th:value="*{firstName}"/>
+        <label for="lastName">Last Name</label>
+        <input type="text" required name="lastName" th:value="*{lastName}"/>
+        <label for="email">Email</label>
+        <input type="email" required name="email" th:value="*{email}"/>
+        <label for="Age">Age</label>
+        <input type="number" required name="age" th:value="*{age}"/>
+        <button type="submit" class="btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
