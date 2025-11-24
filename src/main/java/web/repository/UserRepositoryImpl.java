@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Transactional
     public void update(User user) {
         Query query = entityManager.createQuery("""
-            UPDATE User SET lastName = :lastName, firstName = :firstName, email = :email, age = :age
+            UPDATE User SET last_name = :lastName, first_name = :firstName, email = :email, age = :age
             WHERE id = :id
             """);
         query
@@ -46,7 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     @Transactional
     public void delete(Long id) {
-        Query query = entityManager.createQuery("DELETE User WHERE id = :id")
+        Query query = entityManager.createQuery("DELETE FROM User WHERE id = :id")
             .setParameter("id", id);
         query.executeUpdate();
     }
